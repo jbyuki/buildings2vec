@@ -38,42 +38,42 @@ class ComposedImageData(Dataset):
         # if self.surf_folder is not None:
         #     sf_path = os.path.join(self.surf_folder, self._data_refs[index]+'.jpg')
         #     sf_im = Image.open(sf_path).convert('RGB')
-        corners_annot, edges_annot = self.get_annots(index)
-        im_ed = self.calc_edge_gt(edges_annot)
-        if self.augment:
-            rot = randint(0, 359)
-            flip = randint(0, 1) == 1
+        # corners_annot, edges_annot = self.get_annots(index)
+        # im_ed = self.calc_edge_gt(edges_annot)
+        # if self.augment:
+            # rot = randint(0, 359)
+            # flip = randint(0, 1) == 1
 
-            # rotate and flip image + corners
-            im_ed = self.calc_edge_gt(edges_annot, flip=flip, rot=rot)
-            im = im.rotate(rot)
-            #im_ed = im_ed.rotate(rot)
-            if flip:
-                im = im.transpose(Image.FLIP_LEFT_RIGHT)
-                #im_ed = im_ed.transpose(Image.FLIP_LEFT_RIGHT)
+            # # rotate and flip image + corners
+            # im_ed = self.calc_edge_gt(edges_annot, flip=flip, rot=rot)
+            # im = im.rotate(rot)
+            # #im_ed = im_ed.rotate(rot)
+            # if flip:
+                # im = im.transpose(Image.FLIP_LEFT_RIGHT)
+                # #im_ed = im_ed.transpose(Image.FLIP_LEFT_RIGHT)
 
-            # add depth
-            if self.depth_folder is not None:
-                dp_im = dp_im.rotate(rot)
-                if flip:
-                    dp_im = dp_im.transpose(Image.FLIP_LEFT_RIGHT)
+            # # add depth
+            # if self.depth_folder is not None:
+                # dp_im = dp_im.rotate(rot)
+                # if flip:
+                    # dp_im = dp_im.transpose(Image.FLIP_LEFT_RIGHT)
 
-            # # add gray
-            # if self.gray_folder is not None:
-            #     gr_im = gr_im.rotate(rot)
-            #     if flip:
-            #         gr_im = gr_im.transpose(Image.FLIP_LEFT_RIGHT)
+            # # # add gray
+            # # if self.gray_folder is not None:
+            # #     gr_im = gr_im.rotate(rot)
+            # #     if flip:
+            # #         gr_im = gr_im.transpose(Image.FLIP_LEFT_RIGHT)
 
-            # # add surf
-            # if self.surf_folder is not None:
-            #     sf_im = sf_im.rotate(rot)
-            #     if flip:
-            #         sf_im = sf_im.transpose(Image.FLIP_LEFT_RIGHT)
+            # # # add surf
+            # # if self.surf_folder is not None:
+            # #     sf_im = sf_im.rotate(rot)
+            # #     if flip:
+            # #         sf_im = sf_im.transpose(Image.FLIP_LEFT_RIGHT)
 
         # convert to numpy array
         im = np.array(im).transpose((2, 0, 1))/255.0
         im = (im-np.array(self.mean)[:, np.newaxis, np.newaxis])/np.array(self.std)[:, np.newaxis, np.newaxis]
-        ed = np.array(im_ed)/255.
+        # ed = np.array(im_ed)/255.
 
         if self.depth_folder is not None:
             dp_im = np.array(dp_im)/255.0
@@ -89,7 +89,7 @@ class ComposedImageData(Dataset):
 
         # convert to tensor
         im = torch.from_numpy(im)
-        ed = torch.from_numpy(ed)
+        ed = torch.from_numpy(np.array([0]))
         return im, ed
 
     # Override to give PyTorch size of dataset
