@@ -3,8 +3,8 @@ import os
 import sys
 
 from torch.hub import download_url_to_file
-from torch.utils.model_zoo import urlparse
-from torch.utils.model_zoo import HASH_REGEX
+from torch.hub import urlparse
+from torch.hub import HASH_REGEX
 
 from maskrcnn_benchmark.utils.comm import is_main_process
 from maskrcnn_benchmark.utils.comm import synchronize
