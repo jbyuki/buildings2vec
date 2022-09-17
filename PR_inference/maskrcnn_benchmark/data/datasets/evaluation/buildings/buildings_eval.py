@@ -22,7 +22,7 @@ sys.path.insert(0, '/local-scratch2/nnauata/outdoor_project/junction_detector/ju
 import pickle as p
 
 # from optimizer import extractCycle
-out_dir = '/local-scratch2/nnauata/for_teaser/regions_no_bkg'
+out_dir = '/content/dataset/regions_no_bkg'
 
 if not os.path.exists(out_dir):
     os.mkdir(out_dir)
