@@ -29,12 +29,12 @@ net = torch.load('./best_segmenter.pth').cuda()
 net = net.eval()
 
 # define input folders
-PREFIX = '/home/nelson/Workspace/'
-RGB_FOLDER = '{}/cities_dataset/rgb'.format(PREFIX)
-ANNOT_FOLDER = '{}/cities_dataset/annot'.format(PREFIX)
+PREFIX = '/content/dataset'
+RGB_FOLDER = '{}/rgb'.format(PREFIX)
+ANNOT_FOLDER = '{}/annot'.format(PREFIX)
 
 # define train/val lists
-with open('{}/cities_dataset/all_list.txt'.format(PREFIX)) as f:
+with open('{}/all_list.txt'.format(PREFIX)) as f:
     valid_list = [line.strip() for line in f.readlines()]
 
 mean=[0.485, 0.456, 0.406]
