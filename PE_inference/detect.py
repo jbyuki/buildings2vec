@@ -29,7 +29,7 @@ net = torch.load('./best_segmenter.pth').cuda()
 net = net.eval()
 
 # define input folders
-PREFIX = '/notebooks/dataset'
+PREFIX = '/content/dataset'
 RGB_FOLDER = '{}/rgb'.format(PREFIX)
 ANNOT_FOLDER = '{}/annot'.format(PREFIX)
 

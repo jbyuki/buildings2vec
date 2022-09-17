@@ -15,7 +15,7 @@ pixel_mean = np.array([115.9839754, 126.63120922, 137.73309306], dtype=np.float3
 
 ext = '.pickle'
 #ext = '.pk'
-data_dir = Path('/notebooks/dataset')
+data_dir = Path('/content/dataset')
 root_dir = Path(os.getcwd()) / '..'
 data_root = data_dir
 junc_data_root = data_root / 'PC_and_CE_inference'
