@@ -123,9 +123,9 @@ class DatasetCatalog(object):
             "split": "train"
         },
         "buildings_val": {
-            "img_dir": "/local-scratch2/nnauata/for_teaser/rgb",
-            "ann_file": "/local-scratch2/nnauata/for_teaser/annot",
-            "id_file": "/local-scratch2/nnauata/for_teaser/all_list.txt",
+            "img_dir": "/content/dataset/rgb",
+            "ann_file": "/content/dataset/annot",
+            "id_file": "/content/dataset/all_list.txt",
             "split": "test"
         }
     }
